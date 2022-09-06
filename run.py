@@ -80,6 +80,16 @@ def update_sales_worksheet(data):
     sales_worksheet.append_row(data)
     print("Sales worksheet updated succesfully!\n")
 
+def update_surplus_worksheet(surplus_row):
+    """
+    Update surplus worksheet by adding the data returned from the 
+    calculate_surplus_data function.
+    """
+    print("Updating surplus worksheet, please wait...\n")
+    surplus_worksheet = SHEET.worksheet('surplus')
+    surplus_worksheet.append_row(surplus_row)
+    print("Surplus worksheet updated succesfully!\n")
+
 def main(): 
     """
     Runs all program functions.
@@ -88,7 +98,7 @@ def main():
     sales_data = [int(num) for num in data]
     update_sales_worksheet(sales_data)
     new_surplus_data = calculate_surplus_data(sales_data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
 
 print("Welcome to Love Sandwiches Data Automation\n")
 main()
